@@ -25,8 +25,8 @@ const wordSearch = function(letters, word) {
       return true;
   }
   
-  const reversedLetters = letters.slice().reverse(); 
-for (let i = 0; i < reversedLetters[0].length; i++) {
+  const reversedLetters = letters.slice().reverse();
+  for (let i = 0; i < reversedLetters[0].length; i++) {
     const reversedVertical = reversedLetters.map(ls => ls[i]).join('');
     if (reversedVertical.includes(word))
       return true;
