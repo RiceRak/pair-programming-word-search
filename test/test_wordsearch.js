@@ -20,7 +20,23 @@ describe("#wordSearch()", function() {
     assert.isFalse(result);
   });
 
-  it("should return true if the word is present", function() {
+  it("should return true if the word is present in vertical form", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['Y', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['H', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'LARRY')
+
+    assert.isTrue(result);
+  });
+
+  it("should return true if the word is present in horizontal form", function() {
     const result = wordSearch([
       ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
       ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
@@ -35,4 +51,79 @@ describe("#wordSearch()", function() {
 
     assert.isTrue(result);
   });
+
+  it("should return true if the word is present in horizontal reveresed form", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['Y', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['H', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'LAUQFKZE')
+
+    assert.isTrue(result);
+  });
+
+  it("should return true if the word is present in vertical reveresed form", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['Y', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['H', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['W', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'AAAYRRALA')
+
+    assert.isTrue(result);
+  });
+
+  it("should return false if no letters are passed", function() {
+    const result = wordSearch([], 'SEINFELD')
+
+    assert.isFalse(result);
+  });
+
+
+it("should return true if the word is present but written in lowercase", function () {
+  const result = wordSearch([
+    ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+    ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+    ['Y', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+    ['H', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+    ['W', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+    ['B', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+    ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+    ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+    ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+  ], 'seinfeld')
+
+  assert.isTrue(result);
+});
+
+it("should return false if no word is passed", function () {
+  const result = wordSearch([
+    ['A', 'B', 'C'],
+    ['D', 'E', 'F'],
+    ['G', 'H', 'I'],
+  ], '');
+  assert.isFalse(result);
+});
+
+
+it("should return false if input is not a string", function () {
+  const result = wordSearch([
+    ['A', 'B', 'C'],
+    ['D', 'E', 'F'],
+    ['G', 'H', 'I'],
+  ], 123);
+  assert.isFalse(result);
+});
+
 });
